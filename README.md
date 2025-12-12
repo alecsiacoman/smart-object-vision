@@ -27,6 +27,21 @@ We will extract only the relevant category for our task:
 This subset gives us a large, diverse, and realistic dataset that already contains high-quality annotations of cups in complex, real-world environments (e.g., kitchens, desks, restaurants).
 Available at [https://cocodataset.org](https://cocodataset.org)
 
+### Dataset Construction  
+To build a meaningful training and evaluation setup, we perform the following steps:
+
+1. **Extract only images containing cups** from COCO’s train and validation splits.  
+2. **Convert bounding box annotations** to YOLO-compatible format for YOLOv8, and retain COCO JSON format for Faster R-CNN.  
+3. **Add negative samples**:
+   - A subset of images **without cups** is intentionally included in both the **train** and **test** splits.
+   - This ensures that both models are evaluated not only on how well they detect cups, but also on **their ability to correctly identify when no cup is present** (i.e., avoid false positives).  
+
+The final dataset therefore contains:
+- **Positive samples** (cup images)  
+- **Negative samples** (images with no cups)
+
+This setup better reflects realistic conditions and supports a fair comparison between the two detection models.
+
 ## Models Compared
 
 We compare two widely used object detection models with different architectural approaches:
