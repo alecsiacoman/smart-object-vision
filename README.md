@@ -27,32 +27,42 @@ We will extract only the relevant category for our task:
 This subset gives us a large, diverse, and realistic dataset that already contains high-quality annotations of cups in complex, real-world environments (e.g., kitchens, desks, restaurants).
 Available at [https://cocodataset.org](https://cocodataset.org)
 
-## Libraries & Frameworks
+## Models Compared
 
-Here are the primary libraries and tools we will use for the ML pipeline, from training through export and mobile integration:
+We compare two widely used object detection models with different architectural approaches:
 
-### Training / Experimentation (in Jupyter notebooks)
-- *PyTorch* – Core deep learning framework for model training and evaluation.
-- *Ultralytics YOLOv8* – Used for both classification (task=classify) and, later, object detection (task=detect).
-- *Torchvision* – Provides pre-trained models and utilities for loading image datasets.
-- *Jupyter Notebook / JupyterLab* – Interactive environment for data exploration, training, and testing.
+### 1. YOLOv8 (You Only Look Once – Version 8)
+- **One-stage detector**
+- Performs object localization and classification in a single forward pass
+- Optimized for speed and real-time inference
+- Implemented using the **Ultralytics YOLOv8** framework
 
-### Model Export & iOS Integration
-- *Ultralytics export utility* – To convert trained PyTorch models into mobile-friendly formats.  
-  Example:
-  bash
-  yolo mode=export model=best.pt format=coreml
-  
-- *Core ML* – Apple’s on-device machine learning framework; runs models efficiently on iPhone using the Neural Engine or GPU.
-- *Core ML Tools (coremltools)* – Python package to convert models from PyTorch (via ONNX) into .mlmodel format for iOS deployment.
-- *Vision Framework (iOS)* – Apple’s API for image analysis tasks; we’ll use it to run the Core ML model and obtain classification or detection results in the app.
+### 2. Faster R-CNN
+- **Two-stage detector**
+- First stage generates region proposals using a Region Proposal Network (RPN)
+- Second stage classifies and refines bounding boxes
+- Known for strong accuracy and robustness on smaller datasets
+- Implemented using **Torchvision**
 
-### Mobile App Framework (Frontend)
-- *Ionic Angular* – Cross-platform UI framework for building the mobile app using web technologies.
-- *Capacitor* – Bridge between the Angular web layer and native iOS functionality (camera access, Core ML inference).
-- *Camera Preview Plugin* – Enables live camera feed inside the Ionic app; used to capture frames.
+This comparison highlights the trade-offs between **speed-oriented** and **accuracy-oriented** detection models.
 
-### Supporting Tools
-- *Git* – For version control and collaboration.
-- *Python virtual environment (venv or conda)* – To manage dependencies cleanly across development environments.
+## Evaluation Metrics
+
+Model performance is evaluated using standard **object detection metrics**, consistent with the COCO evaluation protocol:
+
+- **Intersection over Union (IoU)**  
+  - IoU threshold: **0.5**
+- **Average Precision (AP)**  
+  - Measures detection accuracy across confidence thresholds
+- **Average Recall (AR)**  
+  - Measures the model’s ability to detect all relevant objects
+
+
+## Experimental Setup
+
+- Same training, validation, and test splits for both models
+- Same object class (**cup**)
+- Same evaluation metrics
+- Pre-trained weights used for model initialization
+- Training and evaluation performed using PyTorch-based frameworks
 
