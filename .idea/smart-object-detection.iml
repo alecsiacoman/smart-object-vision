@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/models" />
     </content>
-    <orderEntry type="jdk" jdkName="C:\Users\pital\anaconda3" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.12 virtualenv at D:\an4sem1\PRS\smart-object-detection\.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

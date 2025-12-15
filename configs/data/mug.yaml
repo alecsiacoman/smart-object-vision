@@ -1,0 +1,7 @@
+path: ./mug_coco_yolo
+
+train: images/train2017
+val: images/val2017
+
+names:
+  0: mug

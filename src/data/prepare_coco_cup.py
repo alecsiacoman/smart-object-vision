@@ -33,8 +33,18 @@ def extract_cup_split(split_dir, ann_path, out_dir):
 def main():
     root = Path('coco')
     out = Path('mug_coco_yolo')
-    extract_cup_split(root/'train2017', root/'annotations'/'instances_train2017.json', out)
-    extract_cup_split(root/'val2017',   root/'annotations'/'instances_val2017.json',   out)
+
+    extract_cup_split(
+        root / 'train2017' / 'train2017',
+        root / 'annotations' / 'annotations' / 'instances_train2017.json',
+        out
+    )
+
+    extract_cup_split(
+        root / 'val2017' / 'val2017',
+        root / 'annotations' / 'annotations' / 'instances_val2017.json',
+        out
+    )
 
 
 if __name__ == "__main__":
