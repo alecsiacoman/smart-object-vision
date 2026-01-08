@@ -1,4 +1,4 @@
-path: ./mug_coco_yolo
+path: D:/an4sem1/PRS/smart-object-detection/mug_coco_yolo
 
 train: images/train2017
 val: images/val2017
