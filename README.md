@@ -65,13 +65,10 @@ This comparison highlights the trade-offs between **speed-oriented** and **accur
 
 Model performance is evaluated using standard **object detection metrics**, consistent with the COCO evaluation protocol:
 
-- **Intersection over Union (IoU)**  
-  - IoU threshold: **0.5**
-- **Average Precision (AP)**  
-  - Measures detection accuracy across confidence thresholds
-- **Average Recall (AR)**  
-  - Measures the model’s ability to detect all relevant objects
-
+- **mAP@0.50**  
+  - Measures the accuracy of finding the object with a IoU of 0.50
+- **mAP@0.50:0.95**  
+  - Measures the accuracy and precision of locating the detected object by computing the average of 10 test (IoU = 0.50 ... IoU = 0.95)
 
 ## Experimental Setup
 
