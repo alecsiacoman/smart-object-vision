@@ -1,0 +1,8 @@
+path: D:/an4sem1/PRS/smart-object-detection/cup_coco_yolo_small
+
+train: images/train2017
+val: images/val2017
+
+nc: 1
+names:
+  0: cup
